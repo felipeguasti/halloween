@@ -106,13 +106,7 @@
         /* Slide 2 - Contexto */
         .context-scene {
             text-align: center;
-            margin-top: 50px;
-        }
-
-        .context-scene .scene-icon {
-            font-size: 10em;
-            margin: 40px 0;
-            display: block;
+            margin-top: 30px;
         }
 
         .context-scene h2 {
@@ -120,6 +114,23 @@
             color: #ff6600;
             margin-bottom: 40px;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .context-scene .scene-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 40px auto;
+            background: rgba(255, 102, 0, 0.1);
+            border: 3px solid #ff6600;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .context-scene .scene-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .context-scene .example-sentence {
@@ -181,7 +192,7 @@
             transform: scale(1.1);
         }
 
-        /* Slide 4 - Exemplos */
+        /* Slide 4 - Exemplos com Imagens */
         .examples-content h2 {
             font-size: 3.5em;
             color: #ff6600;
@@ -191,8 +202,6 @@
         }
 
         .example-item {
-            display: flex;
-            align-items: center;
             background: rgba(255, 102, 0, 0.1);
             padding: 30px;
             border-radius: 20px;
@@ -203,25 +212,40 @@
 
         .example-item:hover {
             background: rgba(255, 102, 0, 0.2);
-            transform: translateX(10px);
+            transform: scale(1.02);
         }
 
-        .example-item .icon {
-            font-size: 5em;
-            margin-right: 40px;
-            min-width: 100px;
-            text-align: center;
+        .example-visual {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .example-visual img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
         }
 
         .example-item .text {
             font-size: 2.2em;
             color: #fff;
+            text-align: center;
+            margin-top: 20px;
         }
 
         .example-item .text .prep {
             color: #ffaa00;
             font-weight: bold;
             text-decoration: underline;
+            font-size: 1.2em;
         }
 
         /* Slide 5 - Atividade Interativa */
@@ -239,24 +263,86 @@
             border-radius: 20px;
             border: 3px solid #b19cd9;
             margin-bottom: 40px;
-            text-align: center;
         }
 
-        .interactive-item .scene {
-            font-size: 8em;
-            margin: 30px 0;
+        .interactive-visual {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .interactive-visual img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
         }
 
         .interactive-item .question {
             font-size: 2.5em;
             color: #fff;
             margin: 20px 0;
+            text-align: center;
         }
 
         .interactive-item .blank {
             color: #ffaa00;
             font-weight: bold;
             font-size: 1.2em;
+        }
+
+        .reveal-btn {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .reveal-btn:hover {
+            background: linear-gradient(145deg, #45a049, #3d8b40);
+            transform: scale(1.1);
+        }
+
+        .answer {
+            display: none;
+            font-size: 2em;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(76, 175, 80, 0.2);
+            border-radius: 15px;
+            border: 3px solid #4CAF50;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .answer.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Slide 6 - Jogo */
@@ -277,8 +363,28 @@
             text-align: center;
         }
 
-        .game-item .picture {
-            font-size: 10em;
+        .game-visual {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .game-visual img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .game-item p {
+            font-size: 2.5em;
+            color: #fff;
             margin: 30px 0;
         }
 
@@ -287,6 +393,7 @@
             justify-content: center;
             gap: 30px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .option-btn {
@@ -304,6 +411,11 @@
         .option-btn:hover {
             transform: scale(1.1);
             background: linear-gradient(145deg, #9370db, #7b68ee);
+        }
+
+        .option-btn.correct {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            border-color: #4CAF50;
         }
 
         /* Slide 7 - Resumo */
@@ -380,12 +492,49 @@
             background: #f0f0f0;
             border-radius: 10px;
             border-left: 5px solid #ff6600;
+            position: relative;
         }
 
         .activity-question .number {
             color: #ff6600;
             font-weight: bold;
             margin-right: 10px;
+        }
+
+        .activity-answer {
+            display: none;
+            font-size: 0.9em;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 5px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .activity-answer.show {
+            display: block;
+        }
+
+        .show-all-answers-btn {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.8em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto;
+        }
+
+        .show-all-answers-btn:hover {
+            background: linear-gradient(145deg, #45a049, #3d8b40);
+            transform: scale(1.1);
         }
 
         /* Slide 9 - Encerramento */
@@ -529,14 +678,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .example-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .example-item .icon {
-                margin-right: 0;
-                margin-bottom: 20px;
+            .example-visual,
+            .interactive-visual,
+            .game-visual {
+                height: 250px;
             }
 
             .options {
@@ -546,6 +691,11 @@
             .control-btn {
                 padding: 10px 20px;
                 font-size: 1.2em;
+            }
+
+            .context-scene .scene-container {
+                width: 100%;
+                height: 300px;
             }
         }
     </style>
@@ -567,7 +717,9 @@
         <!-- Slide 2: Contexto -->
         <div class="slide context-scene">
             <h2>Let's Start with a Spooky Scene!</h2>
-            <span class="scene-icon">🧙‍♀️🏠</span>
+            <div class="scene-container">
+                <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=600&amp;h=400&amp;fit=crop" alt="Witch flying over house">
+            </div>
             <div class="example-sentence">
                 The witch is flying <span class="preposition-highlight">OVER</span> the house.
             </div>
@@ -602,18 +754,24 @@
             <h2>🎃 Halloween Examples 🎃</h2>
             
             <div class="example-item">
-                <span class="icon">🎃🪑</span>
-                <span class="text">The pumpkin is <span class="prep">ON</span> the table.</span>
+                <div class="example-visual">
+                    <img src="https://images.unsplash.com/photo-1570043433485-c6b4f5c0ec1c?w=800&amp;h=600&amp;fit=crop" alt="Pumpkin on table">
+                </div>
+                <div class="text">The pumpkin is <span class="prep">ON</span> the table.</div>
             </div>
 
             <div class="example-item">
-                <span class="icon">👻🚪</span>
-                <span class="text">The ghost is <span class="prep">BEHIND</span> the door.</span>
+                <div class="example-visual">
+                    <img src="https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd?w=800&amp;h=600&amp;fit=crop" alt="Ghost behind door">
+                </div>
+                <div class="text">The ghost is <span class="prep">BEHIND</span> the door.</div>
             </div>
 
             <div class="example-item">
-                <span class="icon">🐱🪑</span>
-                <span class="text">The cat is <span class="prep">UNDER</span> the chair.</span>
+                <div class="example-visual">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&amp;h=600&amp;fit=crop" alt="Cat under chair">
+                </div>
+                <div class="text">The cat is <span class="prep">UNDER</span> the chair.</div>
             </div>
         </div>
 
@@ -622,15 +780,25 @@
             <h2>👀 Look and Complete! 👀</h2>
             
             <div class="interactive-item">
-                <span class="scene">🕷️🧱</span>
+                <div class="interactive-visual">
+                    <img src="https://images.unsplash.com/photo-1572635148818-ef6fd45eb394?w=800&amp;h=600&amp;fit=crop" alt="Spider on wall">
+                </div>
                 <p class="question">The spider is <span class="blank">____</span> the wall.</p>
-                <p style="font-size: 1.8em; color: #ffaa00; margin-top: 20px;">(Answer: ON)</p>
+                <button class="reveal-btn" onclick="revealAnswer('answer1')">Show Answer 👁️</button>
+                <div class="answer" id="answer1">
+                    <strong>Answer:</strong> ON
+                </div>
             </div>
 
             <div class="interactive-item">
-                <span class="scene">🦇🏰</span>
+                <div class="interactive-visual">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&amp;h=600&amp;fit=crop" alt="Bat over castle">
+                </div>
                 <p class="question">The bat is <span class="blank">____</span> the castle.</p>
-                <p style="font-size: 1.8em; color: #ffaa00; margin-top: 20px;">(Answer: OVER / ABOVE)</p>
+                <button class="reveal-btn" onclick="revealAnswer('answer2')">Show Answer 👁️</button>
+                <div class="answer" id="answer2">
+                    <strong>Answer:</strong> OVER / ABOVE
+                </div>
             </div>
         </div>
 
@@ -642,14 +810,14 @@
             </p>
 
             <div class="game-item">
-                <span class="picture">🐈‍⬛📦</span>
-                <p style="font-size: 2.5em; color: #fff; margin: 30px 0;">
-                    The black cat is _____ the box.
-                </p>
+                <div class="game-visual">
+                    <img src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=800&amp;h=600&amp;fit=crop" alt="Cat in box">
+                </div>
+                <p>The black cat is _____ the box.</p>
                 <div class="options">
-                    <div class="option-btn">ON</div>
-                    <div class="option-btn" style="background: linear-gradient(145deg, #4CAF50, #45a049);">IN ✓</div>
-                    <div class="option-btn">UNDER</div>
+                    <div class="option-btn" onclick="checkAnswer(this, false)">ON</div>
+                    <div class="option-btn correct" onclick="checkAnswer(this, true)">IN</div>
+                    <div class="option-btn" onclick="checkAnswer(this, false)">UNDER</div>
                 </div>
             </div>
         </div>
@@ -685,23 +853,40 @@
                 
                 <div class="activity-question">
                     <span class="number">1.</span> The bat is __________ the tree. 🦇🌳
+                    <div class="activity-answer" id="q1-answer">
+                        <strong>Answer:</strong> IN / ON
+                    </div>
                 </div>
 
                 <div class="activity-question">
                     <span class="number">2.</span> The pumpkin is __________ the table. 🎃🪑
+                    <div class="activity-answer" id="q2-answer">
+                        <strong>Answer:</strong> ON
+                    </div>
                 </div>
 
                 <div class="activity-question">
                     <span class="number">3.</span> The witch is __________ the sky. 🧙‍♀️☁️
+                    <div class="activity-answer" id="q3-answer">
+                        <strong>Answer:</strong> IN
+                    </div>
                 </div>
 
                 <div class="activity-question">
                     <span class="number">4.</span> The ghost is __________ the house. 👻🏠
+                    <div class="activity-answer" id="q4-answer">
+                        <strong>Answer:</strong> IN / BEHIND / IN FRONT OF
+                    </div>
                 </div>
 
                 <div class="activity-question">
                     <span class="number">5.</span> The black cat is __________ the chair. 🐈‍⬛🪑
+                    <div class="activity-answer" id="q5-answer">
+                        <strong>Answer:</strong> ON / UNDER / BEHIND
+                    </div>
                 </div>
+
+                <button class="show-all-answers-btn" onclick="showAllAnswers()">Show All Answers 👁️</button>
             </div>
         </div>
 
@@ -769,6 +954,45 @@
             showSlide(currentSlide);
         }
 
+        // Revelar resposta individual
+        function revealAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            answer.classList.add('show');
+            
+            // Esconder o botão após clicar
+            event.target.style.display = 'none';
+        }
+
+        // Mostrar todas as respostas da atividade escrita
+        function showAllAnswers() {
+            const answers = document.querySelectorAll('.activity-answer');
+            answers.forEach(answer => {
+                answer.classList.add('show');
+            });
+            
+            // Esconder o botão após clicar
+            event.target.style.display = 'none';
+        }
+
+        // Verificar resposta do jogo
+        function checkAnswer(button, isCorrect) {
+            if (isCorrect) {
+                button.style.background = 'linear-gradient(145deg, #4CAF50, #45a049)';
+                button.style.borderColor = '#4CAF50';
+                alert('🎉 Correct! Great job!');
+            } else {
+                button.style.background = 'linear-gradient(145deg, #f44336, #da190b)';
+                button.style.borderColor = '#f44336';
+                alert('❌ Try again!');
+                
+                // Resetar cor após 1 segundo
+                setTimeout(() => {
+                    button.style.background = 'linear-gradient(145deg, #b19cd9, #9370db)';
+                    button.style.borderColor = '#fff';
+                }, 1000);
+            }
+        }
+
         // Navegação por teclado
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowLeft') {
@@ -781,18 +1005,6 @@
         // Inicializar
         document.getElementById('totalSlides').textContent = totalSlides;
         showSlide(currentSlide);
-
-        // Efeito de hover nos botões de opção do jogo
-        const optionBtns = document.querySelectorAll('.option-btn');
-        optionBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (this.textContent.includes('✓')) {
-                    alert('🎉 Correct! Great job!');
-                } else {
-                    alert('❌ Try again!');
-                }
-            });
-        });
     </script>
 </body>
 </html>
