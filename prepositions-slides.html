@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepositions - Halloween Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 50%, #1a0033 100%);
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Container dos slides */
+        .slide-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: linear-gradient(145deg, #2d1b4e, #1a0033);
+            border: 5px solid #ff6600;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(255, 102, 0, 0.4);
+            animation: slideIn 0.5s ease-out;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Slide 1 - Título */
+        .slide-title {
+            text-align: center;
+        }
+
+        .slide-title h1 {
+            font-size: 5em;
+            color: #ff6600;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8),
+                         0 0 30px #ff6600;
+            margin-bottom: 30px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8), 0 0 30px #ff6600;
+            }
+            50% {
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8), 0 0 50px #ff6600, 0 0 70px #ff6600;
+            }
+        }
+
+        .slide-title .icon-large {
+            font-size: 8em;
+            margin: 30px 0;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .slide-title p {
+            font-size: 2em;
+            color: #b19cd9;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Slide 2 - Contexto */
+        .context-scene {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .context-scene .scene-icon {
+            font-size: 10em;
+            margin: 40px 0;
+            display: block;
+        }
+
+        .context-scene h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .context-scene .example-sentence {
+            font-size: 2.5em;
+            color: #fff;
+            background: rgba(255, 102, 0, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #ff6600;
+            margin: 30px 0;
+        }
+
+        .context-scene .preposition-highlight {
+            color: #ffaa00;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-decoration: underline;
+        }
+
+        /* Slide 3 - Introdução */
+        .intro-content h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .intro-content .definition {
+            font-size: 2em;
+            color: #b19cd9;
+            background: rgba(177, 156, 217, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #b19cd9;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .prepositions-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .prep-box {
+            background: linear-gradient(145deg, #ff6600, #ff8800);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .prep-box:hover {
+            transform: scale(1.1);
+        }
+
+        /* Slide 4 - Exemplos */
+        .examples-content h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 50px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 102, 0, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #ff6600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .example-item:hover {
+            background: rgba(255, 102, 0, 0.2);
+            transform: translateX(10px);
+        }
+
+        .example-item .icon {
+            font-size: 5em;
+            margin-right: 40px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .example-item .text {
+            font-size: 2.2em;
+            color: #fff;
+        }
+
+        .example-item .text .prep {
+            color: #ffaa00;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Slide 5 - Atividade Interativa */
+        .interactive-content h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 50px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .interactive-item {
+            background: rgba(177, 156, 217, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #b19cd9;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .interactive-item .scene {
+            font-size: 8em;
+            margin: 30px 0;
+        }
+
+        .interactive-item .question {
+            font-size: 2.5em;
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .interactive-item .blank {
+            color: #ffaa00;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Slide 6 - Jogo */
+        .game-content h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 50px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .game-item {
+            background: rgba(255, 102, 0, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #ff6600;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .game-item .picture {
+            font-size: 10em;
+            margin: 30px 0;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .option-btn {
+            background: linear-gradient(145deg, #b19cd9, #9370db);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 15px;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            border: 3px solid #fff;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(145deg, #9370db, #7b68ee);
+        }
+
+        /* Slide 7 - Resumo */
+        .summary-content h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .notebook-box {
+            background: #fff;
+            color: #000;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            font-family: 'Courier New', monospace;
+            line-height: 2;
+        }
+
+        .notebook-box h3 {
+            font-size: 2.5em;
+            color: #ff6600;
+            margin-bottom: 30px;
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        .notebook-box p {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .notebook-box ul {
+            font-size: 1.8em;
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+
+        .notebook-box li {
+            margin-bottom: 15px;
+        }
+
+        /* Slide 8 - Atividade Escrita */
+        .activity-content h2 {
+            font-size: 3.5em;
+            color: #ff6600;
+            margin-bottom: 50px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .activity-box {
+            background: #fff;
+            color: #000;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            font-family: 'Courier New', monospace;
+        }
+
+        .activity-box h3 {
+            font-size: 2.5em;
+            color: #ff6600;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .activity-question {
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            border-left: 5px solid #ff6600;
+        }
+
+        .activity-question .number {
+            color: #ff6600;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Slide 9 - Encerramento */
+        .closing-content {
+            text-align: center;
+        }
+
+        .closing-content h2 {
+            font-size: 4em;
+            color: #ff6600;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .closing-content .icon-large {
+            font-size: 10em;
+            margin: 40px 0;
+            display: block;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .closing-content .message {
+            font-size: 2.5em;
+            color: #b19cd9;
+            margin: 30px 0;
+        }
+
+        .closing-content .next-lesson {
+            font-size: 2em;
+            color: #ffaa00;
+            background: rgba(255, 170, 0, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #ffaa00;
+            margin-top: 40px;
+        }
+
+        /* Controles de navegação */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            background: linear-gradient(145deg, #ff6600, #ff8800);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(145deg, #ff8800, #ffaa00);
+            transform: scale(1.1);
+        }
+
+        .control-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .slide-counter {
+            background: rgba(255, 102, 0, 0.8);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .home-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(145deg, #b19cd9, #9370db);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(177, 156, 217, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(145deg, #9370db, #7b68ee);
+            transform: scale(1.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+                height: 90vh;
+            }
+
+            .slide-title h1 {
+                font-size: 3em;
+            }
+
+            .slide-title .icon-large {
+                font-size: 5em;
+            }
+
+            .context-scene h2,
+            .intro-content h2,
+            .examples-content h2,
+            .interactive-content h2,
+            .game-content h2,
+            .summary-content h2,
+            .activity-content h2 {
+                font-size: 2.5em;
+            }
+
+            .prepositions-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .example-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .example-item .icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .options {
+                flex-direction: column;
+            }
+
+            .control-btn {
+                padding: 10px 20px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Botão Home -->
+    <button class="home-btn" onclick="window.location.href='index.html'">🏠 Back to Lobby</button>
+
+    <!-- Container dos Slides -->
+    <div class="slide-container">
+        <!-- Slide 1: Título -->
+        <div class="slide active slide-title">
+            <h1>🎃 PREPOSITIONS 🎃</h1>
+            <span class="icon-large">👻</span>
+            <p>Halloween Edition</p>
+        </div>
+
+        <!-- Slide 2: Contexto -->
+        <div class="slide context-scene">
+            <h2>Let's Start with a Spooky Scene!</h2>
+            <span class="scene-icon">🧙‍♀️🏠</span>
+            <div class="example-sentence">
+                The witch is flying <span class="preposition-highlight">OVER</span> the house.
+            </div>
+            <p style="font-size: 2em; color: #b19cd9; margin-top: 40px;">
+                The word "OVER" tells us WHERE the witch is!
+            </p>
+        </div>
+
+        <!-- Slide 3: Introdução -->
+        <div class="slide intro-content">
+            <h2>What are Prepositions?</h2>
+            <div class="definition">
+                Prepositions are words that show the POSITION or LOCATION of things.
+            </div>
+            <p style="font-size: 2em; color: #fff; text-align: center; margin-bottom: 30px;">
+                Common Prepositions:
+            </p>
+            <div class="prepositions-list">
+                <div class="prep-box">IN</div>
+                <div class="prep-box">ON</div>
+                <div class="prep-box">UNDER</div>
+                <div class="prep-box">BEHIND</div>
+                <div class="prep-box">NEXT TO</div>
+                <div class="prep-box">BETWEEN</div>
+                <div class="prep-box">OVER</div>
+                <div class="prep-box">IN FRONT OF</div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Exemplos Halloween -->
+        <div class="slide examples-content">
+            <h2>🎃 Halloween Examples 🎃</h2>
+            
+            <div class="example-item">
+                <span class="icon">🎃🪑</span>
+                <span class="text">The pumpkin is <span class="prep">ON</span> the table.</span>
+            </div>
+
+            <div class="example-item">
+                <span class="icon">👻🚪</span>
+                <span class="text">The ghost is <span class="prep">BEHIND</span> the door.</span>
+            </div>
+
+            <div class="example-item">
+                <span class="icon">🐱🪑</span>
+                <span class="text">The cat is <span class="prep">UNDER</span> the chair.</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Atividade Interativa -->
+        <div class="slide interactive-content">
+            <h2>👀 Look and Complete! 👀</h2>
+            
+            <div class="interactive-item">
+                <span class="scene">🕷️🧱</span>
+                <p class="question">The spider is <span class="blank">____</span> the wall.</p>
+                <p style="font-size: 1.8em; color: #ffaa00; margin-top: 20px;">(Answer: ON)</p>
+            </div>
+
+            <div class="interactive-item">
+                <span class="scene">🦇🏰</span>
+                <p class="question">The bat is <span class="blank">____</span> the castle.</p>
+                <p style="font-size: 1.8em; color: #ffaa00; margin-top: 20px;">(Answer: OVER / ABOVE)</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Jogo Rápido -->
+        <div class="slide game-content">
+            <h2>🎮 Quick Game! 🎮</h2>
+            <p style="font-size: 2em; color: #b19cd9; text-align: center; margin-bottom: 40px;">
+                Match the picture with the correct preposition!
+            </p>
+
+            <div class="game-item">
+                <span class="picture">🐈‍⬛📦</span>
+                <p style="font-size: 2.5em; color: #fff; margin: 30px 0;">
+                    The black cat is _____ the box.
+                </p>
+                <div class="options">
+                    <div class="option-btn">ON</div>
+                    <div class="option-btn" style="background: linear-gradient(145deg, #4CAF50, #45a049);">IN ✓</div>
+                    <div class="option-btn">UNDER</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Resumo para o Caderno -->
+        <div class="slide summary-content">
+            <h2>📓 Copy to Your Notebook 📓</h2>
+            
+            <div class="notebook-box">
+                <h3>Prepositions – Halloween Edition</h3>
+                
+                <p><strong>Definition:</strong></p>
+                <p>Prepositions show where something is.</p>
+                
+                <p style="margin-top: 30px;"><strong>Common Prepositions:</strong></p>
+                <p>in, on, under, behind, next to, between, over, in front of</p>
+                
+                <p style="margin-top: 30px;"><strong>Example Sentences:</strong></p>
+                <ul>
+                    <li>The cat is <strong>on</strong> the pumpkin.</li>
+                    <li>The ghost is <strong>behind</strong> the door.</li>
+                    <li>The spider is <strong>under</strong> the table.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Atividade Escrita -->
+        <div class="slide activity-content">
+            <h2>✍️ Written Activity ✍️</h2>
+            
+            <div class="activity-box">
+                <h3>Complete the sentences using prepositions:</h3>
+                
+                <div class="activity-question">
+                    <span class="number">1.</span> The bat is __________ the tree. 🦇🌳
+                </div>
+
+                <div class="activity-question">
+                    <span class="number">2.</span> The pumpkin is __________ the table. 🎃🪑
+                </div>
+
+                <div class="activity-question">
+                    <span class="number">3.</span> The witch is __________ the sky. 🧙‍♀️☁️
+                </div>
+
+                <div class="activity-question">
+                    <span class="number">4.</span> The ghost is __________ the house. 👻🏠
+                </div>
+
+                <div class="activity-question">
+                    <span class="number">5.</span> The black cat is __________ the chair. 🐈‍⬛🪑
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Encerramento -->
+        <div class="slide closing-content">
+            <h2>🎉 Great Job! 🎉</h2>
+            <span class="icon-large">🎃</span>
+            <p class="message">You learned about prepositions with Halloween!</p>
+            <p class="message" style="font-size: 2em;">Keep practicing and have fun! 👻</p>
+            <div class="next-lesson">
+                <strong>Next Lesson:</strong><br>
+                Halloween Vocabulary! 🧙‍♀️🕷️🦇
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles de Navegação -->
+    <div class="controls">
+        <button class="control-btn" id="prevBtn" onclick="changeSlide(-1)">⬅️ Previous</button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
+        </div>
+        <button class="control-btn" id="nextBtn" onclick="changeSlide(1)">Next ➡️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 9;
+
+        // Atualizar display dos slides
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (n > totalSlides) {
+                currentSlide = totalSlides;
+            }
+            if (n < 1) {
+                currentSlide = 1;
+            }
+            
+            // Esconder todos os slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Mostrar slide atual
+            slides[currentSlide - 1].classList.add('active');
+            
+            // Atualizar contador
+            document.getElementById('currentSlide').textContent = currentSlide;
+            
+            // Controlar botões
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+            
+            // Scroll para o topo do slide
+            slides[currentSlide - 1].scrollTop = 0;
+        }
+
+        // Mudar slide
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+
+        // Navegação por teclado
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Inicializar
+        document.getElementById('totalSlides').textContent = totalSlides;
+        showSlide(currentSlide);
+
+        // Efeito de hover nos botões de opção do jogo
+        const optionBtns = document.querySelectorAll('.option-btn');
+        optionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent.includes('✓')) {
+                    alert('🎉 Correct! Great job!');
+                } else {
+                    alert('❌ Try again!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

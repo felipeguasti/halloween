@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎃 Halloween English Classes - Lobby</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Creepster', 'Arial Black', cursive;
+            background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 50%, #1a0033 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animação de morcegos */
+        .bat {
+            position: fixed;
+            font-size: 30px;
+            animation: fly 15s linear infinite;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(0);
+            }
+            50% {
+                transform: translateX(50vw) translateY(-100px);
+            }
+            100% {
+                transform: translateX(100vw) translateY(0);
+            }
+        }
+
+        .bat:nth-child(1) { top: 10%; animation-delay: 0s; }
+        .bat:nth-child(2) { top: 30%; animation-delay: 5s; }
+        .bat:nth-child(3) { top: 50%; animation-delay: 10s; }
+
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #ff6600;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8),
+                         0 0 20px #ff6600,
+                         0 0 40px #ff6600;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #b19cd9;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Área de aulas */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .lesson-card {
+            background: linear-gradient(145deg, #2d1b4e, #1a0033);
+            border: 3px solid #ff6600;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6);
+            border-color: #ffaa00;
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 102, 0, 0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .lesson-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .lesson-card h2 {
+            font-size: 2em;
+            color: #ff6600;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .lesson-card p {
+            font-size: 1.1em;
+            color: #b19cd9;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-start {
+            display: inline-block;
+            background: linear-gradient(145deg, #ff6600, #ff8800);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #ffaa00;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-start:hover {
+            background: linear-gradient(145deg, #ff8800, #ffaa00);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.6);
+        }
+
+        /* Aulas em breve */
+        .coming-soon {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .coming-soon .lesson-icon {
+            animation: none;
+        }
+
+        .coming-soon-badge {
+            background: #666;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Decorações */
+        .pumpkin-decoration {
+            position: fixed;
+            font-size: 60px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .pumpkin-left {
+            bottom: 20px;
+            left: 20px;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        .pumpkin-right {
+            bottom: 20px;
+            right: 20px;
+            animation: wiggle 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 1.2em;
+            }
+
+            .lessons-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .lesson-card h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Morcegos voadores -->
+    <div class="bat">🦇</div>
+    <div class="bat">🦇</div>
+    <div class="bat">🦇</div>
+
+    <!-- Decorações de abóbora -->
+    <div class="pumpkin-decoration pumpkin-left">🎃</div>
+    <div class="pumpkin-decoration pumpkin-right">🎃</div>
+
+    <div class="container">
+        <header>
+            <h1>🎃 HALLOWEEN ENGLISH CLASSES 🎃</h1>
+            <p class="subtitle">Welcome to the Spooky Learning Lobby!</p>
+        </header>
+
+        <div class="lessons-grid">
+            <!-- Aula 1 - Prepositions -->
+            <div class="lesson-card" onclick="window.location.href='prepositions-slides.html'">
+                <span class="lesson-icon">👻</span>
+                <h2>Lesson 1</h2>
+                <h3 style="color: #ffaa00; margin-bottom: 15px; font-size: 1.5em;">Prepositions</h3>
+                <p>Learn prepositions with spooky Halloween examples! Where is the ghost? Behind the door!</p>
+                <a href="prepositions-slides.html" class="btn-start">START LESSON 👉</a>
+            </div>
+
+            <!-- Aula 2 - Em breve -->
+            <div class="lesson-card coming-soon">
+                <span class="lesson-icon">🧙‍♀️</span>
+                <h2>Lesson 2</h2>
+                <h3 style="color: #ffaa00; margin-bottom: 15px; font-size: 1.5em;">Halloween Vocabulary</h3>
+                <p>Discover spooky words and expressions! Witches, ghosts, and more!</p>
+                <span class="coming-soon-badge">COMING SOON</span>
+            </div>
+
+            <!-- Aula 3 - Em breve -->
+            <div class="lesson-card coming-soon">
+                <span class="lesson-icon">🧛</span>
+                <h2>Lesson 3</h2>
+                <h3 style="color: #ffaa00; margin-bottom: 15px; font-size: 1.5em;">Present Continuous</h3>
+                <p>What are the monsters doing? Learn actions in progress with Halloween!</p>
+                <span class="coming-soon-badge">COMING SOON</span>
+            </div>
+
+            <!-- Aula 4 - Em breve -->
+            <div class="lesson-card coming-soon">
+                <span class="lesson-icon">🕷️</span>
+                <h2>Lesson 4</h2>
+                <h3 style="color: #ffaa00; margin-bottom: 15px; font-size: 1.5em;">Scary Stories</h3>
+                <p>Read and create your own spooky tales in English!</p>
+                <span class="coming-soon-badge">COMING SOON</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efeito de som ao passar o mouse (opcional)
+        const cards = document.querySelectorAll('.lesson-card:not(.coming-soon)');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 10);
+            });
+        });
+
+        // Adicionar mais morcegos dinamicamente
+        function createBat() {
+            const bat = document.createElement('div');
+            bat.className = 'bat';
+            bat.textContent = '🦇';
+            bat.style.top = Math.random() * 80 + '%';
+            bat.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            bat.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(bat);
+        }
+
+        // Criar morcegos extras
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createBat, i * 2000);
+        }
+    </script>
+</body>
+</html>
